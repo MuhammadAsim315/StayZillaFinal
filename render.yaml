@@ -4,8 +4,8 @@ services:
     env: python
     buildCommand: |
       pip install --upgrade pip setuptools wheel
-      pip install -r requirements-exact.txt
+      pip install -r requirements-python311.txt
     startCommand: gunicorn run:app
     envVars:
       - key: PYTHON_VERSION
-        value: 3.13.0
+        value: 3.11.0
