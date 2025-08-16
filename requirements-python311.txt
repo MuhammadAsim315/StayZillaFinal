@@ -1,4 +1,4 @@
-# Requirements for Python 3.11 - stable and compatible
+# Production requirements for StayZilla
 Flask==2.3.3
 Werkzeug==2.3.7
 Flask-SQLAlchemy==3.0.5
