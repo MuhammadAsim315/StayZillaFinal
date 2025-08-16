@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - StayZilla</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-gray-900">StayZilla Admin</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Back to Site</a>
+                    <a href="/admin/users" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Manage Users</a>
+                    <a href="/admin/properties" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Manage Properties</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Total Registered Users</dt>
+                                <dd class="text-lg font-medium text-gray-900" id="total-users">Loading...</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-5 w-0 flex-1">
+                            <dl>
+                                <dt class="text-sm font-medium text-gray-500 truncate">Today's Registrations</dt>
+                                <dd class="text-lg font-medium text-gray-900" id="today-registrations">Loading...</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Users -->
+        <div class="bg-white shadow rounded-lg mb-8">
+            <div class="px-4 py-5 sm:p-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Recent Registrations</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Registration</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200" id="recent-users-table">
+                            <tr>
+                                <td colspan="5" class="px-6 py-4 text-center text-gray-500">Loading users...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Activity -->
+        <div class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Registration Activity</h3>
+                <div class="text-center py-8">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900">Focus on User Registration</h3>
+                    <p class="mt-1 text-sm text-gray-500">This system is designed to collect user registrations and provide insights into your user base.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                // Load users
+                const usersResponse = await fetch('/api/admin/users');
+                const usersData = await usersResponse.json();
+                
+                // Load properties
+                const propertiesResponse = await fetch('/api/admin/properties');
+                const propertiesData = await propertiesResponse.json();
+                
+                        // Update stats
+        document.getElementById('total-users').textContent = usersData.users.length;
+        document.getElementById('today-registrations').textContent = usersData.users.length > 0 ? 'Active' : 'None';
+        
+        // Update recent users table
+        updateUsersTable(usersData.users.slice(0, 10)); // Show 10 most recent registrations
+                
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+        
+        function updateUsersTable(users) {
+            const tbody = document.getElementById('recent-users-table');
+            if (users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-gray-500">No users registered yet</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = users.map(user => `
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10">
+                                <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                    <span class="text-blue-600 font-medium">${user.username.charAt(0).toUpperCase()}</span>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <div class="text-sm font-medium text-gray-900">${user.first_name} ${user.last_name}</div>
+                                <div class="text-sm text-gray-500">@${user.username}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${user.email}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${user.registration_date}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${user.phone_number || 'N/A'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            ${user.status}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        // Properties table function removed since we're focusing on users
+        
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadDashboardData);
+        
+        // Refresh data every 30 seconds
+        setInterval(loadDashboardData, 30000);
+    </script>
+</body>
+</html>
