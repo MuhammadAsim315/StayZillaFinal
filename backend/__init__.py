@@ -1,13 +1,13 @@
 from flask import Flask, send_from_directory, render_template
 from flask_login import LoginManager
-from flask_mail import Mail
+# from flask_mail import Mail  # Temporarily disabled for deployment
 from .config import Config
 from .models import db, User
 import os
 
 # Initialize extensions
 login_manager = LoginManager()
-mail = Mail()
+# mail = Mail()  # Temporarily disabled for deployment
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -23,7 +23,7 @@ def create_app(config_class=Config):
     # Initialize extensions with app
     db.init_app(app)
     login_manager.init_app(app)
-    mail.init_app(app)
+    # mail.init_app(app)  # Temporarily disabled for deployment
     
     # Setup login manager
     login_manager.login_view = 'auth.login'
