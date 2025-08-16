@@ -4,7 +4,7 @@ services:
     env: python
     buildCommand: |
       pip install --upgrade pip setuptools wheel
-      pip install -r requirements-modern.txt
+      pip install -r requirements-exact.txt
     startCommand: gunicorn run:app
     envVars:
       - key: PYTHON_VERSION
