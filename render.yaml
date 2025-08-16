@@ -2,7 +2,9 @@ services:
   - type: web
     name: stayzilla
     env: python
-    buildCommand: pip install -r requirements-minimal.txt
+    buildCommand: |
+      pip install --upgrade pip setuptools wheel
+      pip install -r requirements-minimal.txt
     startCommand: gunicorn run:app
     envVars:
       - key: PYTHON_VERSION
