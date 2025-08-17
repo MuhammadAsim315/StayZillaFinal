@@ -45,6 +45,28 @@ def get_all_properties():
     # Return empty properties for now since we're focusing on users
     return jsonify({'properties': []})
 
+@admin_bp.route('/api/admin/contacts')
+# @admin_required  # Temporarily disabled for testing
+def get_contacts():
+    """Get all contact submissions for admin panel"""
+    from backend.models import Contact
+    contacts = Contact.query.order_by(Contact.created_at.desc()).all()
+    
+    contact_list = []
+    for contact in contacts:
+        contact_data = {
+            'id': contact.id,
+            'name': contact.name,
+            'email': contact.email,
+            'subject': contact.subject,
+            'message': contact.message[:100] + '...' if len(contact.message) > 100 else contact.message,
+            'created_at': contact.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            'status': contact.status
+        }
+        contact_list.append(contact_data)
+    
+    return jsonify({'contacts': contact_list})
+
 @admin_bp.route('/admin/users')
 @admin_required
 def users_page():
